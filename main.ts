@@ -34,10 +34,10 @@ myController.onCommandReceived(function () {
         wuKong.stopAllMotor()
     }
     if (myController.rightSliderChanged() || myController.rightJoystickChanged(myController.JoystickDirection.X) || myController.orientationChanged(myController.OrientationAxis.X)) {
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, myController.commandValue())
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, myController.commandValueAsNumber())
     }
     if (myController.leftSliderChanged() || myController.rightJoystickChanged(myController.JoystickDirection.Y) || myController.orientationChanged(myController.OrientationAxis.Y)) {
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, myController.commandValue())
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, myController.commandValueAsNumber())
     }
     if (myController.commandName() == "playStop") {
         stop = true;

@@ -4,7 +4,7 @@
     "dependencies": {
         "core": "*",
         "microphone": "*",
-        "my controller": "github:aorczyk/vc-extension#master",
+        "my controller": "github:aorczyk/vc-extension#v2.2.0",
         "wuKong": "github:elecfreaks/pxt-wukong#v1.5.8"
     },
     "files": [
