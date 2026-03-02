@@ -1,13 +1,41 @@
 myController.onCommandReceived(function () {
-    if (myController.buttonWasPressed("down")) {
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 280)
-        myController.setButton("1", myController.ButtonVisibility.Visible, myController.ButtonColor.Green)
+    if (myController.commandName() == "pen") {
+        if (myController.commandValue() == "up") {
+            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 180)
+            myController.setButton("1", myController.ButtonVisibility.Visible, myController.ButtonColor.Black)
+        } else {
+            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 280)
+            myController.setButton("1", myController.ButtonVisibility.Visible, myController.ButtonColor.Green)
+        }
     }
     if (myController.buttonWasPressed("up")) {
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 180)
-        myController.setButton("1", myController.ButtonVisibility.Visible, myController.ButtonColor.Black)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed)
     }
-    if (myController.buttonWasPressed("1")) {
+    if (myController.buttonWasPressed("down")) {
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed * -1)
+    }
+    if (myController.buttonWasPressed("right")) {
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, motorSpeed)
+    }
+    if (myController.buttonWasPressed("left")) {
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, motorSpeed * -1)
+    }
+    if (myController.buttonWasPressed("p")) {
+        wuKong.setAllMotor(motorSpeed, motorSpeed)
+    }
+    if (myController.buttonWasPressed("o")) {
+        wuKong.setAllMotor(motorSpeed * -1, motorSpeed)
+    }
+    if (myController.buttonWasPressed("l")) {
+        wuKong.setAllMotor(motorSpeed, motorSpeed * -1)
+    }
+    if (myController.buttonWasPressed("k")) {
+        wuKong.setAllMotor(motorSpeed * -1, motorSpeed * -1)
+    }
+    if (myController.buttonWasReleased("up") || myController.buttonWasReleased("down") || myController.buttonWasReleased("right") || myController.buttonWasReleased("left") || myController.buttonWasReleased("o") || myController.buttonWasReleased("p") || myController.buttonWasReleased("k") || myController.buttonWasReleased("l")) {
+        wuKong.stopAllMotor()
+    }
+    if (myController.buttonWasPressed("1") || myController.buttonWasPressed("m")) {
         if (myController.toggleButton()) {
             wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 280)
             myController.setButton("1", myController.ButtonVisibility.Visible, myController.ButtonColor.Green)
@@ -94,7 +122,9 @@ myController.onCommandReceived(function () {
     }
 })
 myController.onSetup(myController.ConfirmationMode.Require, function () {
-    myController.applySettings("vc;init; vc;sl;1;-100;100;1;0;0;1;; vc;sr;1;-100;100;1;0;0;0;; vc;jrx;-100;100;1;0;0; vc;jry;-100;100;1;0;0; vc;b;1;1;0;<i class=\"fa-solid fa-arrows-up-down\"></i>; vc;b;2;1;0;<i class=\"fa-solid fa-circle-stop\"></i>; vc;b;3;1;0;<i class=\"fa-regular fa-square\"></i>; vc;b;4;1;0;<i class=\"fa-solid fa-xmark\"></i>; vc;b;7;1;0;<i class=\"fa-solid fa-slash\"></i>; vc;il;1; vc;ir;1; vc;show;sl,sr,jl,jr,al,ar,br,bl;")
+    myController.applySettings("vc;init; vc;sl;1;-100;100;1;0;0;1;; vc;sr;1;-100;100;1;0;0;0;; vc;jrx;-100;100;1;0;0; vc;jry;-100;100;1;0;0; vc;b;m;1;0;<i class=\"fa-solid fa-arrows-up-down\"></i>; vc;b;1;1;0;<i class=\"fa-solid fa-arrows-up-down\"></i>; vc;b;2;1;0;<i class=\"fa-solid fa-circle-stop\"></i>; vc;b;3;1;0;<i class=\"fa-regular fa-square\"></i>; vc;b;4;1;0;<i class=\"fa-solid fa-xmark\"></i>; vc;b;7;1;0;<i class=\"fa-solid fa-slash\"></i>; vc;il;1; vc;show;sl,sr,jl,jr,ar,br,bl,arb;")
 })
 let stop = false
+let motorSpeed = 0
+motorSpeed = 100
 myController.useBluetooth()
