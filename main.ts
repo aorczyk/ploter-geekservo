@@ -48,51 +48,51 @@ myController.onCommandReceived(function () {
         wuKong.stopAllMotor()
     }
     if (myController.buttonWasPressed("3")) {
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M1, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M2, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M1, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
         basic.pause(2000)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M2, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M1, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.setMotorSpeed(wuKong.MotorList.M2, 0)
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
     }
     if (myController.buttonWasPressed("4")) {
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, 100)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, motorSpeed)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
-        wuKong.setMotorSpeed(wuKong.MotorList.M1, -100)
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, 100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, -1 * motorSpeed)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
-        wuKong.setMotorSpeed(wuKong.MotorList.M2, -100)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, -1 * motorSpeed)
         basic.pause(2000)
         wuKong.stopAllMotor()
     }
     if (myController.buttonWasPressed("7")) {
         stop = false
-        for (let x = 0; x <= 99; x++) {
+        for (let x = 0; x <= 99; x+=5) {
             wuKong.setAllMotor(100, x)
             basic.pause(50)
             if (stop) {
@@ -100,7 +100,7 @@ myController.onCommandReceived(function () {
             }
         }
         wuKong.setAllMotor(0, 0)
-        for (let x2 = 0; x2 <= 99; x2++) {
+        for (let x2 = 0; x2 <= 99; x2+=5) {
             wuKong.setAllMotor(0 - x2, -100)
             basic.pause(50)
             if (stop) {
@@ -126,5 +126,5 @@ myController.onSetup(myController.ConfirmationMode.Require, function () {
 })
 let stop = false
 let motorSpeed = 0
-motorSpeed = 100
+motorSpeed = 10
 myController.useBluetooth()
