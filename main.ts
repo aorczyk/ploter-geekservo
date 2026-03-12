@@ -126,5 +126,5 @@ myController.onSetup(myController.ConfirmationMode.Require, function () {
 })
 let stop = false
 let motorSpeed = 0
-motorSpeed = 10
+motorSpeed = 100
 myController.useBluetooth()
